@@ -12,10 +12,10 @@ day00-2-sample.out: day00-2.awk day00-sample.data
 day00-2.out: day00-2.awk day00.data
 	./day00-2.sh day00.data day00-2.out
 
-test1: 
+test1: day00-1-sample.out
 	bats day00-1.bats
 
-test2:
+test2: day00-2-sample.out
 	bats day00-2.bats
 
 clean:
