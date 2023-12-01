@@ -24,15 +24,15 @@
 
 {  
 
-    gsub(/one/, "1")
-    gsub(/two/, "2")
-    gsub(/three/, "3")
-    gsub(/four/, "4")
-    gsub(/five/, "5")
-    gsub(/six/, "6")
-    gsub(/seven/, "7")
-    gsub(/eight/, "8")
-    gsub(/nine/, "9")
+    gsub(/one/, "o1e")
+    gsub(/two/, "t2o")
+    gsub(/three/, "th3ee")
+    gsub(/four/, "f4ur")
+    gsub(/five/, "f5ve")
+    gsub(/six/, "s6x")
+    gsub(/seven/, "se7en")
+    gsub(/eight/, "ei8ht")
+    gsub(/nine/, "n9ne")
 
     n=patsplit($0, z, /[0-9]/, x)
     t += z[1] * 10
