@@ -6,4 +6,4 @@
 # usage: day00-2.sh day00-sample.data day00-sample.out
 # usage: day00-2.sh day00.data day00-2.out
 
-awk -f day00-2.awk < $1 > $2
+awk -f day00-2.awk < "$1" > "$2"

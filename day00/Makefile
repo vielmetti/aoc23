@@ -19,4 +19,4 @@ test2: day00-2-sample.out
 	bats day00-2.bats
 
 clean:
-	rm *out
+	rm ./*.out
