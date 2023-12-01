@@ -17,10 +17,27 @@
 
 # first nubmer on the line
 
+# for part 2, the nubmers can be spelled out. so a round of substitutions
+
+# substitaitons don't work we need to handle the case of adjacent
+# words, e.g. twone is really 2 1. time to rethink!
+
 {  
+
+    gsub(/one/, "1")
+    gsub(/two/, "2")
+    gsub(/three/, "3")
+    gsub(/four/, "4")
+    gsub(/five/, "5")
+    gsub(/six/, "6")
+    gsub(/seven/, "7")
+    gsub(/eight/, "8")
+    gsub(/nine/, "9")
+
     n=patsplit($0, z, /[0-9]/, x)
     t += z[1] * 10
     t +=  z[n]
+    print z[1], z[n]
 }
 
 END { print t }
