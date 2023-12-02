@@ -17,3 +17,7 @@
 @test "we got the expected data" {
    diff day00-1-sample.out day00-1-expected.data
 }
+
+@test "goawk same as awk" {
+   diff day00-1-sample.out goawk-day00-1-sample.out
+}
