@@ -21,3 +21,7 @@ there's the very minimum needed to set up the day.
 any number adjacent to a symbol, even diagonally, is a "part number" and should be included in your sum. 
 
 
+notes from today
+
+goawk doesn't support arrays of arrays, the old school way to
+do things is with a[i, j] rather than a[i][j].

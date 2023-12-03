@@ -5,5 +5,5 @@
 
 # usage: day00-1.sh day00-sample.data day00-sample.out
 
-gawk -f day03-1.awk < "$1" > "$2"
+/opt/homebrew/bin/gawk -f day03-1.awk < "$1" > "$2"
 goawk -f day03-1.awk < "$1" > "goawk-$2"
