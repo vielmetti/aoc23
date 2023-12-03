@@ -13,4 +13,6 @@ What I need here:
 - a bats test harness that checks everything to be good
 
 a refinement: take out the shell scripts, they
-just take up space and time
+just take up space and time. do the work
+in the makefile.  next step will be to simplify
+the makefile some.
