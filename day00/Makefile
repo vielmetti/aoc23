@@ -1,22 +1,24 @@
-all: day00-1-sample.out day00-1.out day00-2-sample.out day00-2.out
+AOCDAY=day00
 
-day00-1-sample.out: day00-1.awk day00-sample.data
-	./day00-1.sh day00-sample.data day00-1-sample.out
+all: $(AOCDAY)-1-sample.out $(AOCDAY)-1.out $(AOCDAY)-2-sample.out $(AOCDAY)-2.out
 
-day00-1.out: day00-1.awk day00.data
-	./day00-1.sh day00.data day00-1.out
+$(AOCDAY)-1-sample.out: $(AOCDAY)-1.awk $(AOCDAY)-1-sample.data
+	./$(AOCDAY)-1.sh $(AOCDAY)-1-sample.data $(AOCDAY)-1-sample.out
 
-day00-2-sample.out: day00-2.awk day00-sample.data
-	./day00-2.sh day00-sample.data day00-2-sample.out
+$(AOCDAY)-1.out: $(AOCDAY)-1.awk $(AOCDAY).data
+	./$(AOCDAY)-1.sh $(AOCDAY).data $(AOCDAY)-1.out
 
-day00-2.out: day00-2.awk day00.data
-	./day00-2.sh day00.data day00-2.out
+$(AOCDAY)-2-sample.out: $(AOCDAY)-2.awk $(AOCDAY)-2-sample.data
+	./$(AOCDAY)-2.sh $(AOCDAY)-2-sample.data $(AOCDAY)-2-sample.out
 
-test1: day00-1-sample.out
-	bats day00-1.bats
+$(AOCDAY)-2.out: $(AOCDAY)-2.awk $(AOCDAY).data
+	./$(AOCDAY)-2.sh $(AOCDAY).data $(AOCDAY)-2.out
 
-test2: day00-2-sample.out
-	bats day00-2.bats
+test1: $(AOCDAY)-1-sample.out
+	bats $(AOCDAY)-1.bats
+
+test2: $(AOCDAY)-2-sample.out
+	bats $(AOCDAY)-2.bats
 
 clean:
 	rm ./*.out
