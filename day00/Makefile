@@ -2,12 +2,14 @@ AOCDAY=day00
 GAWK=/opt/homebrew/bin/gawk
 GOAWK=/opt/homebrew/bin/goawk
 
-	
-all: $(AOCDAY)-1.sample.out $(AOCDAY)-1.out $(AOCDAY)-2.sample.out $(AOCDAY)-2.out \
+goawktargets = \
 	goawk/$(AOCDAY)-1.sample.out \
 	goawk/$(AOCDAY)-1.out \
 	goawk/$(AOCDAY)-2.sample.out \
 	goawk/$(AOCDAY)-2.out 
+	
+all: $(AOCDAY)-1.sample.out $(AOCDAY)-1.out $(AOCDAY)-2.sample.out $(AOCDAY)-2.out \
+	$(goawktargets)
 
 $(AOCDAY)-1.bats.setup:
 	echo "export AOCDAY=\"$(AOCDAY)-1\"" > $@
