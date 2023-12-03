@@ -8,7 +8,85 @@
 # for the template, the problem is simple, print
 # the second line of the data file
 
-# and the second problem of the day is to print the 2d and 3d line
+# one character per field
 
-NR==2 { print }
-NR==3 { print }
+BEGIN {  }
+
+# we are going to read the whole set into one array
+# and then derive a second array with the 
+# "adjacent to a symbol" logic
+
+# all is everything
+# num is all of the numerical fields
+# sym is all of the non-numerical, non-dot fields
+
+{ 
+    field = length($0)
+    rec = NR
+
+    for(i=1; i<=length($0); i+=1) {
+
+       all[NR][i] = substr($0, i, 1)
+       this = all[NR][i]
+
+       if ( this == ".") {
+# do nothing
+       } else if ( this+0 == this  ) {
+         num[NR][i] = "n"
+       } else if ( this == "*" ){
+         sym[NR][i] = NR " " i
+         sym[NR-1][i] = NR " " i
+         sym[NR+1][i] = NR " " i
+       
+         sym[NR+1][i-1] = NR " " i
+         sym[NR][i-1] = NR " " i
+         sym[NR-1][i-1] = NR " " i
+
+         sym[NR+1][i+1] = NR " " i
+         sym[NR-1][i+1] = NR " " i
+         sym[NR][i+1] = NR " " i
+       }
+    }
+
+}
+
+END {
+    innumber = 0
+    nearsymbol = 0
+
+    for(r=1; r<=rec; r++) {
+       for(f=1; f<=field; f++) {
+          
+          if(innumber==0 && num[r][f]=="n") {
+             cur = all[r][f]
+             innumber=1 
+             if (sym[r][f] == "x") {
+                 nearsymbol=1
+                 matched[r][f]++
+                 matchr = r
+                 matchf = f
+             }
+          } 
+          else if(innumber==1 && num[r][f]=="n") {
+             cur = cur*10 + all[r][f]
+             innumber=1
+	     if (sym[r][f] != "" ) {
+                 nearsymbol=1
+                 matched[r][f]++
+                 matchrf = sym[r][f]
+             }
+          }
+          else if(innumber==1 && num[r][f]!="n") {
+             innumber = 0
+             if(nearsymbol!=0) {
+                t+=cur
+                print cur, matchrf
+                cur = 0
+                nearsymbol = 0
+                matchrf = ""
+             }
+          }
+       }
+    }
+    print t
+}
