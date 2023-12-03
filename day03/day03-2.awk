@@ -34,17 +34,17 @@ BEGIN {  }
        } else if ( this+0 == this  ) {
          num[NR][i] = "n"
        } else if ( this == "*" ){
-         sym[NR][i] = NR " " i
          sym[NR-1][i] = NR " " i
+         sym[NR][i] =   NR " " i
          sym[NR+1][i] = NR " " i
        
          sym[NR+1][i-1] = NR " " i
-         sym[NR][i-1] = NR " " i
+         sym[NR][i-1] =   NR " " i
          sym[NR-1][i-1] = NR " " i
 
-         sym[NR+1][i+1] = NR " " i
          sym[NR-1][i+1] = NR " " i
-         sym[NR][i+1] = NR " " i
+         sym[NR][i+1] =   NR " " i
+         sym[NR+1][i+1] = NR " " i
        }
     }
 
@@ -53,6 +53,7 @@ BEGIN {  }
 END {
     innumber = 0
     nearsymbol = 0
+    matchrf = ""
 
     for(r=1; r<=rec; r++) {
        for(f=1; f<=field; f++) {
@@ -60,11 +61,9 @@ END {
           if(innumber==0 && num[r][f]=="n") {
              cur = all[r][f]
              innumber=1 
-             if (sym[r][f] == "x") {
+             if (sym[r][f] != "") {
                  nearsymbol=1
-                 matched[r][f]++
-                 matchr = r
-                 matchf = f
+                 matchrf = sym[r][f]
              }
           } 
           else if(innumber==1 && num[r][f]=="n") {
@@ -72,15 +71,18 @@ END {
              innumber=1
 	     if (sym[r][f] != "" ) {
                  nearsymbol=1
-                 matched[r][f]++
                  matchrf = sym[r][f]
              }
           }
           else if(innumber==1 && num[r][f]!="n") {
              innumber = 0
              if(nearsymbol!=0) {
-                t+=cur
-                print cur, matchrf
+                if(rf[matchrf]!=0) {
+                   print cur*rf[matchrf]
+                   t+=cur*rf[matchrf]
+                }
+                else
+                   rf[matchrf]=cur
                 cur = 0
                 nearsymbol = 0
                 matchrf = ""

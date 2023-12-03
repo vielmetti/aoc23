@@ -74,6 +74,7 @@ END {
           else if(innumber==1 && num[r][f]!="n") {
              innumber = 0
              if(nearsymbol!=0) {
+                t+=cur
                 print cur
                 cur = 0
                 nearsymbol = 0
@@ -81,4 +82,5 @@ END {
           }
        }
     }
+    print t
 }

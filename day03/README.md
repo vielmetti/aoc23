@@ -17,3 +17,7 @@ what I should have if I'm doing it right is a single
 file that has the bats setup with the day of the contest
 in it, and everyhing else loading that file so that
 there's the very minimum needed to set up the day.
+
+any number adjacent to a symbol, even diagonally, is a "part number" and should be included in your sum. 
+
+
