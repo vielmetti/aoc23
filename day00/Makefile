@@ -7,7 +7,13 @@ all: $(AOCDAY)-1.sample.out $(AOCDAY)-1.out $(AOCDAY)-2.sample.out $(AOCDAY)-2.o
 	goawk-$(AOCDAY)-1.sample.out \
 	goawk-$(AOCDAY)-1.out \
 	goawk-$(AOCDAY)-2.sample.out \
-	goawk-$(AOCDAY)-2.out \
+	goawk-$(AOCDAY)-2.out 
+
+$(AOCDAY)-1.bats.setup:
+	echo "export AOCDAY=\"$(AOCDAY)-1\"" > $(AOCDAY)-1.bats.setup
+
+$(AOCDAY)-2.bats.setup:
+	echo "export AOCDAY=\"$(AOCDAY)-2\"" > $(AOCDAY)-2.bats.setup
 
 $(AOCDAY)-1.sample.out: $(AOCDAY)-1.awk $(AOCDAY)-1.sample
 	$(GAWK) -f $(AOCDAY)-1.awk < $(AOCDAY)-1.sample > $(AOCDAY)-1.sample.out
@@ -33,11 +39,11 @@ goawk-$(AOCDAY)-2.sample.out: $(AOCDAY)-2.awk $(AOCDAY)-2.sample
 goawk-$(AOCDAY)-2.out: $(AOCDAY)-2.awk $(AOCDAY).data
 	$(GOAWK) -f $(AOCDAY)-2.awk < $(AOCDAY).data > goawk-$(AOCDAY)-2.out
 
-test1: $(AOCDAY)-1.sample.out
+test1: $(AOCDAY)-1.sample.out $(AOCDAY)-1.bats.setup
 	bats $(AOCDAY)-1.bats
 
-test2: $(AOCDAY)-2.sample.out
+test2: $(AOCDAY)-2.sample.out $(AOCDAY)-2.bats.setup
 	bats $(AOCDAY)-2.bats
 
 clean:
-	rm ./*.out
+	rm ./*.out ./*.setup
