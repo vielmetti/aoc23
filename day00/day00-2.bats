@@ -17,5 +17,5 @@ load day00-2.bats.setup
 }
 
 @test "goawk same as gawk" {
-   diff $AOCDAY.sample.out goawk-$AOCDAY.sample.out
+   diff $AOCDAY.sample.out goawk/$AOCDAY.sample.out
 }
