@@ -14,5 +14,9 @@ What I need here:
 
 a refinement: take out the shell scripts, they
 just take up space and time. do the work
+
 in the makefile.  next step will be to simplify
-the makefile some.
+the makefile some. I think I'll use a separate
+directory for the output of each "awk" equivlanet
+command, e.g. an awk/ mawk/ gawk/ goawk/ set
+for output, so that filenames stay simple.
