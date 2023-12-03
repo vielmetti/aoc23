@@ -7,3 +7,4 @@
 # usage: day00-2.sh day00.data day00-2.out
 
 awk -f day00-2.awk < "$1" > "$2"
+goawk -f day00-2.awk < "$1" > "goawk-$2"

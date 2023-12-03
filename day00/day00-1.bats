@@ -1,3 +1,5 @@
+load day00-1-bats.setup
+
 @test "we have a makefile" {
    test -f Makefile
 }
@@ -7,17 +9,17 @@
 }
 
 @test "we have awk code" {
-   test -f day00-1.awk
+   test -f $AOCDAY.awk
 }
 
 @test "we have shell code" {
-   test -f day00-1.sh
+   test -f $AOCDAY.sh
 }
 
 @test "we got the expected data" {
-   diff day00-1-sample.out day00-1-expected.data
+   diff $AOCDAY-sample.out $AOCDAY-expected.data
 }
 
 @test "goawk same as gawk" {
-   diff day00-1-sample.out goawk-day00-1-sample.out
+   diff $AOCDAY-sample.out goawk-$AOCDAY-sample.out
 }
