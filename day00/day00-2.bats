@@ -12,10 +12,6 @@ load day00-2.bats.setup
    test -f $AOCDAY.awk
 }
 
-@test "we have shell code" {
-   test -f $AOCDAY.sh
-}
-
 @test "we got the expected data" {
    diff $AOCDAY.sample.out $AOCDAY.expected
 }

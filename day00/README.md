@@ -11,3 +11,6 @@ What I need here:
 - an awk script that does the heavy lifting
 - a shell script that wraps it all together
 - a bats test harness that checks everything to be good
+
+a refinement: take out the shell scripts, they
+just take up space and time

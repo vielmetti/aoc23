@@ -1,18 +1,37 @@
 AOCDAY=day00
+GAWK=/opt/homebrew/bin/gawk
+GOAWK=/opt/homebrew/bin/goawk
 
-all: $(AOCDAY)-1.sample.out $(AOCDAY)-1.out $(AOCDAY)-2.sample.out $(AOCDAY)-2.out
+	
+all: $(AOCDAY)-1.sample.out $(AOCDAY)-1.out $(AOCDAY)-2.sample.out $(AOCDAY)-2.out \
+	goawk-$(AOCDAY)-1.sample.out \
+	goawk-$(AOCDAY)-1.out \
+	goawk-$(AOCDAY)-2.sample.out \
+	goawk-$(AOCDAY)-2.out \
 
 $(AOCDAY)-1.sample.out: $(AOCDAY)-1.awk $(AOCDAY)-1.sample
-	./$(AOCDAY)-1.sh $(AOCDAY)-1.sample $(AOCDAY)-1.sample.out
+	$(GAWK) -f $(AOCDAY)-1.awk < $(AOCDAY)-1.sample > $(AOCDAY)-1.sample.out
 
 $(AOCDAY)-1.out: $(AOCDAY)-1.awk $(AOCDAY).data
-	./$(AOCDAY)-1.sh $(AOCDAY).data $(AOCDAY)-1.out
+	$(GAWK) -f $(AOCDAY)-1.awk < $(AOCDAY).data > $(AOCDAY)-1.out
 
 $(AOCDAY)-2.sample.out: $(AOCDAY)-2.awk $(AOCDAY)-2.sample
-	./$(AOCDAY)-2.sh $(AOCDAY)-2.sample $(AOCDAY)-2.sample.out
+	$(GAWK) -f $(AOCDAY)-2.awk < $(AOCDAY)-2.sample > $(AOCDAY)-2.sample.out
 
 $(AOCDAY)-2.out: $(AOCDAY)-2.awk $(AOCDAY).data
-	./$(AOCDAY)-2.sh $(AOCDAY).data $(AOCDAY)-2.out
+	$(GAWK) -f $(AOCDAY)-2.awk < $(AOCDAY).data > $(AOCDAY)-2.out
+
+goawk-$(AOCDAY)-1.sample.out: $(AOCDAY)-1.awk $(AOCDAY)-1.sample
+	$(GOAWK) -f $(AOCDAY)-1.awk < $(AOCDAY)-1.sample > goawk-$(AOCDAY)-1.sample.out
+
+goawk-$(AOCDAY)-1.out: $(AOCDAY)-1.awk $(AOCDAY).data
+	$(GOAWK) -f $(AOCDAY)-1.awk < $(AOCDAY).data > goawk-$(AOCDAY)-1.out
+
+goawk-$(AOCDAY)-2.sample.out: $(AOCDAY)-2.awk $(AOCDAY)-2.sample
+	$(GOAWK) -f $(AOCDAY)-2.awk < $(AOCDAY)-2.sample > goawk-$(AOCDAY)-2.sample.out
+
+goawk-$(AOCDAY)-2.out: $(AOCDAY)-2.awk $(AOCDAY).data
+	$(GOAWK) -f $(AOCDAY)-2.awk < $(AOCDAY).data > goawk-$(AOCDAY)-2.out
 
 test1: $(AOCDAY)-1.sample.out
 	bats $(AOCDAY)-1.bats
