@@ -26,25 +26,25 @@ BEGIN {  }
 
     for(i=1; i<=length($0); i+=1) {
 
-       all[NR][i] = substr($0, i, 1)
-       this = all[NR][i]
+       all[NR,i] = substr($0, i, 1)
+       this = all[NR,i]
 
        if ( this == ".") {
 # do nothing
        } else if ( this+0 == this  ) {
-         num[NR][i] = "n"
+         num[NR,i] = "n"
        } else if ( this == "*" ){
-         sym[NR-1][i] = NR " " i
-         sym[NR][i] =   NR " " i
-         sym[NR+1][i] = NR " " i
+         sym[NR-1,i] = NR " " i
+         sym[NR,i] =   NR " " i
+         sym[NR+1,i] = NR " " i
        
-         sym[NR+1][i-1] = NR " " i
-         sym[NR][i-1] =   NR " " i
-         sym[NR-1][i-1] = NR " " i
+         sym[NR+1,i-1] = NR " " i
+         sym[NR,i-1] =   NR " " i
+         sym[NR-1,i-1] = NR " " i
 
-         sym[NR-1][i+1] = NR " " i
-         sym[NR][i+1] =   NR " " i
-         sym[NR+1][i+1] = NR " " i
+         sym[NR-1,i+1] = NR " " i
+         sym[NR,i+1] =   NR " " i
+         sym[NR+1,i+1] = NR " " i
        }
     }
 
@@ -58,23 +58,23 @@ END {
     for(r=1; r<=rec; r++) {
        for(f=1; f<=field; f++) {
           
-          if(innumber==0 && num[r][f]=="n") {
-             cur = all[r][f]
+          if(innumber==0 && num[r,f]=="n") {
+             cur = all[r,f]
              innumber=1 
-             if (sym[r][f] != "") {
+             if (sym[r,f] != "") {
                  nearsymbol=1
-                 matchrf = sym[r][f]
+                 matchrf = sym[r,f]
              }
           } 
-          else if(innumber==1 && num[r][f]=="n") {
-             cur = cur*10 + all[r][f]
+          else if(innumber==1 && num[r,f]=="n") {
+             cur = cur*10 + all[r,f]
              innumber=1
-	     if (sym[r][f] != "" ) {
+	     if (sym[r,f] != "" ) {
                  nearsymbol=1
-                 matchrf = sym[r][f]
+                 matchrf = sym[r,f]
              }
           }
-          else if(innumber==1 && num[r][f]!="n") {
+          else if(innumber==1 && num[r,f]!="n") {
              innumber = 0
              if(nearsymbol!=0) {
                 if(rf[matchrf]!=0) {
