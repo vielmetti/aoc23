@@ -2,14 +2,14 @@ AOCDAY=day00
 
 all: $(AOCDAY)-1-sample.out $(AOCDAY)-1.out $(AOCDAY)-2-sample.out $(AOCDAY)-2.out
 
-$(AOCDAY)-1-sample.out: $(AOCDAY)-1.awk $(AOCDAY)-1-sample.data
-	./$(AOCDAY)-1.sh $(AOCDAY)-1-sample.data $(AOCDAY)-1-sample.out
+$(AOCDAY)-1-sample.out: $(AOCDAY)-1.awk $(AOCDAY)-1.sample
+	./$(AOCDAY)-1.sh $(AOCDAY)-1.sample $(AOCDAY)-1-sample.out
 
 $(AOCDAY)-1.out: $(AOCDAY)-1.awk $(AOCDAY).data
 	./$(AOCDAY)-1.sh $(AOCDAY).data $(AOCDAY)-1.out
 
-$(AOCDAY)-2-sample.out: $(AOCDAY)-2.awk $(AOCDAY)-2-sample.data
-	./$(AOCDAY)-2.sh $(AOCDAY)-2-sample.data $(AOCDAY)-2-sample.out
+$(AOCDAY)-2-sample.out: $(AOCDAY)-2.awk $(AOCDAY)-2.sample
+	./$(AOCDAY)-2.sh $(AOCDAY)-2.sample $(AOCDAY)-2-sample.out
 
 $(AOCDAY)-2.out: $(AOCDAY)-2.awk $(AOCDAY).data
 	./$(AOCDAY)-2.sh $(AOCDAY).data $(AOCDAY)-2.out
