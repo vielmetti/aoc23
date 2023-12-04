@@ -14,6 +14,8 @@ goawktargets = \
 	goawk/$(AOCDAY)-1.out \
 	goawk/$(AOCDAY)-2.sample.out \
 	goawk/$(AOCDAY)-2.out 
+
+cleanfiles = $(wildcard */*.out *.out *.setup)
 	
 all: $(AOCDAY)-1.sample.out $(AOCDAY)-1.out $(AOCDAY)-2.sample.out $(AOCDAY)-2.out \
 	$(goawktargets) \
@@ -67,5 +69,9 @@ test1: $(AOCDAY)-1.sample.out $(AOCDAY)-1.bats.setup
 test2: $(AOCDAY)-2.sample.out $(AOCDAY)-2.bats.setup
 	bats $(AOCDAY)-2.bats
 
+.PHONY : clean
 clean:
-	rm ./*.out ./*.setup goawk/*.out mawk/*.out
+	-rm $(cleanfiles)
+
+dirs:
+	mkdir -p gawk mawk nawk awk goawk
